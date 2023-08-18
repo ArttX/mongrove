@@ -1,0 +1,97 @@
+{
+    "name": "mongrove",
+    "description": "MongoDB toolkit for typesafe schema creation and runtime validation",
+    "version": "1.0.0",
+    "license": "MIT",
+    "author": "ArttX <arttxiam@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ArttX/mongrove"
+    },
+    "bugs": {
+        "url": "https://github.com/ArttX/mongrove/issues"
+    },
+    "homepage": "https://github.com/ArttX/mongrove#readme",
+    "keywords": [
+        "mongodb",
+        "zod",
+        "toolkit",
+        "validation",
+        "schema",
+        "database",
+        "typescript",
+        "typesafe"
+    ],
+    "type": "module",
+    "main": "./lib/index.js",
+    "types": "./lib/index.d.ts",
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./lib/index.d.ts",
+                "default": "./lib/index.js" 
+            },
+            "require": {
+                "types": "./lib/index.d.cts",
+                "default": "./lib/index.cjs"
+            }
+        },
+        "./schema": {
+            "import": {
+                "types": "./lib/schema/index.d.ts",
+                "default": "./lib/schema/index.js"
+            },
+            "require": {
+                "types": "./lib/schema/index.d.cts",
+                "default": "./lib/schema/index.cjs"
+            }
+        },
+        "./utils": {
+            "import": {
+                "types": "./lib/utils/index.d.ts",
+                "default": "./lib/utils/index.js"
+            },
+            "require": {
+                "types": "./lib/utils/index.d.cts",
+                "default": "./lib/utils/index.cjs"
+            }
+        },
+        "./errors": {
+            "import": {
+                "types": "./lib/errors/index.d.ts",
+                "default": "./lib/errors/index.js"
+            },
+            "require": {
+                "types": "./lib/errors/index.d.cts",
+                "default": "./lib/errors/index.cjs"
+            }
+        }
+    },
+    "files": [
+        "lib/**/*",
+        "CHANGELOG.md"
+    ],
+    "engines": {
+        "node": ">=16.0.0"
+    },
+    "scripts": {
+        "build": "tsup",
+        "format": "prettier --write ./src",
+        "format:check": "prettier --check ./src",
+        "lint": "tsc --noEmit && eslint src"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^6.2.1",
+        "@typescript-eslint/parser": "^6.2.1",
+        "eslint": "^8.46.0",
+        "eslint-config-prettier": "^8.10.0",
+        "eslint-plugin-promise": "^6.1.1",
+        "prettier": "^3.0.1",
+        "tsup": "^7.2.0",
+        "typescript": "^5.1.6"
+    },
+    "dependencies": {
+        "mongodb": "^5.7.0",
+        "zod": "^3.21.4"
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "lib": ["ESNext"],
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "Node16",
+        "allowImportingTsExtensions": true,
+        "noEmit": true,
+        "skipLibCheck": true,
+        "baseUrl": "./src",
+        "paths": {
+            "~/errors/*": ["lib/errors/*"],
+            "~/utils/*": ["lib/utils/*"],
+            "~/types": ["lib/types.ts"],
+            "~/schema/types": ["lib/schema/types.ts"]
+        }
+    },
+    "include": ["src", "tsup.config.ts"],
+    "exclude": ["node_modules"]
+}
