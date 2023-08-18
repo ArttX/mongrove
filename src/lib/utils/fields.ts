@@ -1,4 +1,4 @@
-import type { ValidatorDefaultOptions } from "~/types";
+import type { ValidatorDefaultOptions } from "~/schema/types";
 
 export function isValidDefaultOptions(options: ValidatorDefaultOptions): boolean {
     const { nullable, optional, default: def } = options;

@@ -1,11 +1,11 @@
 import { z, type ZodString } from "zod";
-import type { ValidatorDefaultOptions } from "~/types";
 import {
     Field,
     type CheckDefault,
     type CheckNone,
     type CheckNullable,
-    type CheckOptional
+    type CheckOptional,
+    type ValidatorDefaultOptions
 } from "~/schema/types";
 
 type FieldType = ZodString["_output"];

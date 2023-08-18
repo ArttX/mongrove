@@ -1,7 +1,8 @@
 import { z } from "zod";
 import type { ZodRawShape, ZodType, ZodObject } from "zod";
 import type { Field } from "~/schema/types";
-import type { ValidatorDefaultOptions, CreateIndexOptions } from "~/types";
+import type { CreateIndexOptions } from "~/types";
+import type { ValidatorDefaultOptions } from "~/schema/types";
 import { isValidDefaultOptions } from "~/utils/fields.ts";
 import { MongroveSchemaError } from "~/errors/SchemaError.ts";
 

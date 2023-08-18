@@ -1,7 +1,7 @@
 import { z, type ZodType } from "zod";
 import { ObjectId } from "mongodb";
 
-import type { ValidatorDefaultOptions } from "~/types";
+import type { ValidatorDefaultOptions } from "~/schema/types";
 import {
     Field,
     type CheckDefault,

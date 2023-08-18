@@ -1,6 +1,6 @@
 import { z, type ZodDate } from "zod";
 
-import type { ValidatorDefaultOptions } from "~/types";
+import type { ValidatorDefaultOptions } from "~/schema/types";
 import {
     Field,
     type CheckDefault,

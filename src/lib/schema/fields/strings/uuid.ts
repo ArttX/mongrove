@@ -1,5 +1,5 @@
 import { z, type ZodString } from "zod";
-import type { ValidatorDefaultOptions } from "~/types";
+import type { ValidatorDefaultOptions } from "~/schema/types";
 import {
     Field,
     type CheckDefault,
