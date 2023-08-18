@@ -1,6 +1,6 @@
 import type { MongroveSchemaValidator } from "~/types";
 
-type SchemaDefineOptions = {
+export type SchemaDefineOptions = {
     /**
      * ### Filters databases used with indexes update in schema
      * If function provided, filters out databases with given function,\
@@ -21,7 +21,7 @@ type SchemaDefineOptions = {
  *     user: Collection({...})
  * });
  */
-class Schema<Validator extends MongroveSchemaValidator> {
+export class Schema<Validator extends MongroveSchemaValidator> {
     private schema: Validator;
     private options: SchemaDefineOptions;
 
@@ -39,7 +39,6 @@ class Schema<Validator extends MongroveSchemaValidator> {
     }
 }
 
-export { Schema };
-export * from "./NObject.ts";
-export * from "./Collection.ts";
+export { NObject } from "./NObject.ts";
+export { Collection } from "./Collection.ts";
 export * from "./fields/index.ts";

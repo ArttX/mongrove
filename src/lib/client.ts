@@ -25,11 +25,11 @@ import type {
 import type { CreateIndexOptions, MongroveSchemaValidator } from "~/types";
 import type { Schema } from "./schema/index.ts";
 
-type MongroveClientOptions = {
+export type MongroveClientOptions = {
     mongoOptions?: MongoClientOptions;
 };
 
-class MongroveClient<Validator extends MongroveSchemaValidator> {
+export class MongroveClient<Validator extends MongroveSchemaValidator> {
     private eventEmitter: MongroveEmitter;
     private mongoClient: MongoClient;
     private schema: Schema<Validator>;
@@ -256,5 +256,3 @@ class MongroveClient<Validator extends MongroveSchemaValidator> {
         }
     }
 }
-
-export { MongroveClient };

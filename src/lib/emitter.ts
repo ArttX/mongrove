@@ -13,7 +13,7 @@ type EventName = keyof Events;
 type Listener = Events[EventName];
 type Args = Parameters<Listener>;
 
-class MongroveEmitter extends EventEmitter {
+export class MongroveEmitter extends EventEmitter {
     on(eventName: EventName, listener: Listener): this {
         return super.on(eventName, listener);
     }
@@ -24,5 +24,3 @@ class MongroveEmitter extends EventEmitter {
         return super.emit(eventName, ...args);
     }
 }
-
-export { MongroveEmitter };
