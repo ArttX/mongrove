@@ -76,8 +76,8 @@ export type SchemaFromCollection<
     Type extends "output" | "input" = "output"
 > = Col extends MongroveCollection<MongroveSchemaValidator, string, infer O, infer I>
     ? Type extends "output"
-    ? O
-    : I
+        ? O
+        : I
     : never;
 
 /**
@@ -102,6 +102,6 @@ export type SchemaOf<
     Type extends "output" | "input" = "output"
 > = V extends MongroveSchemaValidator
     ? Type extends "output"
-    ? V[Name]["validator"]["_output"]
-    : V[Name]["validator"]["_input"]
+        ? V[Name]["validator"]["_output"]
+        : V[Name]["validator"]["_input"]
     : never;
