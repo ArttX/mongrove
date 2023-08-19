@@ -1,7 +1,7 @@
 {
     "name": "mongrove",
     "description": "MongoDB toolkit for typesafe schema creation and runtime validation",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": "MIT",
     "author": "ArttX <arttxiam@gmail.com>",
     "repository": {
@@ -29,7 +29,7 @@
         ".": {
             "import": {
                 "types": "./lib/index.d.ts",
-                "default": "./lib/index.js" 
+                "default": "./lib/index.js"
             },
             "require": {
                 "types": "./lib/index.d.cts",
