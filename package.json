@@ -1,7 +1,7 @@
 {
     "name": "mongrove",
     "description": "MongoDB toolkit for typesafe schema creation and runtime validation",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "license": "MIT",
     "author": "ArttX <arttxiam@gmail.com>",
     "repository": {
