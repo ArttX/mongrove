@@ -238,6 +238,13 @@ Collection(fields: Fields, options?: ValidatorCollectionOptions);
 NObject(fields: Fields, options?: ValidatorObjectOptions);
 ```
 
+```ts
+type ValidatorObjectOptions = {
+    optional?: boolean;
+    nullable?: boolean;
+};
+```
+
 ### Schema options
 
 -   filterDatabases
@@ -502,6 +509,10 @@ import { type SchemaType } from "./client/index.ts";
 
 const UserType = SchemaOf<SchemaType, "users", "input">;
 ```
+
+### Validation
+
+Validation is enabled in all write queries by default. You can opt-out validation by providing `validate: false` in query options.
 
 ## Additional Tips
 
