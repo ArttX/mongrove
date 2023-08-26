@@ -22,7 +22,7 @@ export type ValidatorDefaultOptions<
 type If<O extends boolean, If extends ZodType, Else extends ZodType> = O extends true ? If : Else;
 
 // prettier-ignore
-type ValidatorState<
+export type ValidatorState<
     T extends ZodType,
     Default extends boolean,
     Optional extends boolean,
