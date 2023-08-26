@@ -51,11 +51,11 @@ class ObjectField<
  */
 export function NObject<Fields extends ObjectContent>(
     fields: Fields,
-    options?: ValidatorObjectOptions & Omit<CheckOptional, "default">
+    options: ValidatorObjectOptions & Omit<CheckOptional, "default">
 ): ObjectField<ZodObject<TransformedFields<Fields>>, true, false>;
 export function NObject<Fields extends ObjectContent>(
     fields: Fields,
-    options?: ValidatorObjectOptions & Omit<CheckNullable, "default">
+    options: ValidatorObjectOptions & Omit<CheckNullable, "default">
 ): ObjectField<ZodObject<TransformedFields<Fields>>, false, true>;
 export function NObject<Fields extends ObjectContent>(
     fields: Fields,
