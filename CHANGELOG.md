@@ -1,5 +1,9 @@
 # Changelog
 
+### mongrove@1.0.3
+
+-   Fixed issue with `NObject` overload types
+
 ### mongrove@1.0.2
 
 -   Added `optional`, `nullable` options to `NObject`
