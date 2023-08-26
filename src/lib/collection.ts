@@ -58,11 +58,17 @@ export class MongroveCollection<
         doc: OptionalUnlessRequiredId<Input>,
         options?: MongroveInsertOneOptions
     ): Promise<InsertOneResult<ColSchema>> {
+        const validate = options?.validate ?? true;
         try {
-            const validDoc = this.schema[this.name].validator.parse(
-                doc
-            ) as OptionalUnlessRequiredId<ColSchema>;
-            return await super.insertOne(validDoc, options);
+            if (validate) {
+                const validDoc = this.schema[this.name].validator.parse(
+                    doc
+                ) as OptionalUnlessRequiredId<ColSchema>;
+                return await super.insertOne(validDoc, options);
+            } else {
+                const unsafeDoc = doc as unknown as OptionalUnlessRequiredId<ColSchema>;
+                return await super.insertOne(unsafeDoc, options);
+            }
         } catch (err) {
             if (err instanceof ZodError)
                 throw new MongroveValidationError(MongroveErrorCodes.Act_InsertFailed, err, {
@@ -88,11 +94,17 @@ export class MongroveCollection<
         docs: OptionalUnlessRequiredId<Input>[],
         options?: MongroveBulkWriteOptions
     ): Promise<InsertManyResult<ColSchema>> {
+        const validate = options?.validate ?? true;
         try {
-            const validDocs = this.schema[this.name].validator
-                .array()
-                .parse(docs) as OptionalUnlessRequiredId<ColSchema>[];
-            return await super.insertMany(validDocs, options);
+            if (validate) {
+                const validDocs = this.schema[this.name].validator
+                    .array()
+                    .parse(docs) as OptionalUnlessRequiredId<ColSchema>[];
+                return await super.insertMany(validDocs, options);
+            } else {
+                const unsafeDocs = docs as unknown as OptionalUnlessRequiredId<ColSchema>[];
+                return await super.insertMany(unsafeDocs, options);
+            }
         } catch (err) {
             if (err instanceof ZodError)
                 throw new MongroveValidationError(MongroveErrorCodes.Act_InsertFailed, err, {
@@ -138,11 +150,17 @@ export class MongroveCollection<
         replacement: WithoutId<Input>,
         options: MongroveFindOneAndReplaceOptions & { includeResultMetadata: boolean }
     ): Promise<ModifyResult<ColSchema> | WithId<ColSchema> | null> {
+        const validate = options?.validate ?? true;
         try {
-            const validReplacement = this.schema[this.name].validator.parse(
-                replacement
-            ) as WithoutId<ColSchema>;
-            return await super.findOneAndReplace(filter, validReplacement, options);
+            if (validate) {
+                const validReplacement = this.schema[this.name].validator.parse(
+                    replacement
+                ) as WithoutId<ColSchema>;
+                return await super.findOneAndReplace(filter, validReplacement, options);
+            } else {
+                const unsafeReplacement = replacement as unknown as WithoutId<ColSchema>;
+                return await super.findOneAndReplace(filter, unsafeReplacement, options);
+            }
         } catch (err) {
             if (err instanceof ZodError)
                 throw new MongroveValidationError(MongroveErrorCodes.Act_ReplaceFailed, err, {
@@ -184,11 +202,14 @@ export class MongroveCollection<
         update: UpdateFilter<ColSchema>,
         options: MongroveFindOneAndUpdateOptions & { includeResultMetadata: boolean }
     ): Promise<ModifyResult<ColSchema> | WithId<ColSchema> | null> {
+        const validate = options?.validate ?? true;
         try {
-            // Partial validation
-            const updateData = parseUpdateFilterToObject(update);
-            // Not passing, so it not uses schema default field values
-            this.schema[this.name].validator.partial().parse(updateData);
+            if (validate) {
+                // Partial validation
+                const updateData = parseUpdateFilterToObject(update);
+                // Not passing, so it not uses schema default field values
+                this.schema[this.name].validator.partial().parse(updateData);
+            }
             return await super.findOneAndUpdate(filter, update, options);
         } catch (err) {
             if (err instanceof ZodError)
@@ -217,11 +238,17 @@ export class MongroveCollection<
         replacement: WithoutId<Input>,
         options?: MongroveReplaceOptions
     ): Promise<Document | UpdateResult<ColSchema>> {
+        const validate = options?.validate ?? true;
         try {
-            const validReplacement = this.schema[this.name].validator.parse(
-                replacement
-            ) as WithoutId<ColSchema>;
-            return await super.replaceOne(filter, validReplacement, options);
+            if (validate) {
+                const validReplacement = this.schema[this.name].validator.parse(
+                    replacement
+                ) as WithoutId<ColSchema>;
+                return await super.replaceOne(filter, validReplacement, options);
+            } else {
+                const unsafeReplacement = replacement as unknown as WithoutId<ColSchema>;
+                return await super.replaceOne(filter, unsafeReplacement, options);
+            }
         } catch (err) {
             if (err instanceof ZodError)
                 throw new MongroveValidationError(MongroveErrorCodes.Act_ReplaceFailed, err, {
@@ -248,11 +275,14 @@ export class MongroveCollection<
         update: UpdateFilter<ColSchema> | Partial<ColSchema>,
         options?: MongroveUpdateOptions
     ): Promise<UpdateResult> {
+        const validate = options?.validate ?? true;
         try {
-            // Partial validation
-            const updateData = parseUpdateFilterToObject(update);
-            // Not passing, so it not uses schema default field values
-            this.schema[this.name].validator.partial().parse(updateData);
+            if (validate) {
+                // Partial validation
+                const updateData = parseUpdateFilterToObject(update);
+                // Not passing, so it not uses schema default field values
+                this.schema[this.name].validator.partial().parse(updateData);
+            }
             return await super.updateOne(filter, update, options);
         } catch (err) {
             if (err instanceof ZodError)
@@ -280,11 +310,14 @@ export class MongroveCollection<
         update: UpdateFilter<ColSchema>,
         options?: MongroveUpdateOptions
     ): Promise<UpdateResult> {
+        const validate = options?.validate ?? true;
         try {
-            // Partial validation
-            const updateData = parseUpdateFilterToObject(update);
-            // Not passing, so it not uses schema default field values
-            this.schema[this.name].validator.partial().parse(updateData);
+            if (validate) {
+                // Partial validation
+                const updateData = parseUpdateFilterToObject(update);
+                // Not passing, so it not uses schema default field values
+                this.schema[this.name].validator.partial().parse(updateData);
+            }
             return await super.updateMany(filter, update, options);
         } catch (err) {
             if (err instanceof ZodError)
